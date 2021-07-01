@@ -5,12 +5,14 @@ const NavigationBar = ({navigation, activeButton}) => {
   const [homeStyle, setHomeStyle] = useState(styles.navButton);
   const [settingsStyle, setSettingsStyle] = useState(styles.navButton);
 
+  // Check which button is active and add a style to it
   useEffect(() => {
     (activeButton === 'Home') ? setHomeStyle([styles.navButton, styles.activeButton]) : setSettingsStyle([styles.navButton, styles.activeButton]);
   }, [activeButton])
 
   return(
     <View style={styles.buttonContainer} >
+      {/* Using Pressable instead of Button for styling options */}
       <Pressable style={homeStyle} onPress={() => navigation.navigate('Home')}>
         <Text style={styles.buttonText}>Home</Text>
       </Pressable>
@@ -21,6 +23,7 @@ const NavigationBar = ({navigation, activeButton}) => {
   );
 };
 
+// Styles
 const styles = StyleSheet.create({
   buttonContainer: {
     width: '100%',
