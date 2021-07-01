@@ -11,11 +11,29 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
-          {/* Routes 'Home' and 'Settings' and corresponding React Components */}
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Settings" component={SettingsScreen} />
-        </Stack.Navigator>
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{
+          headerTitleAlign: 'center',
+          headerStyle: {
+            backgroundColor: '#24f2bb',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontSize: 24
+          }
+        }}
+      >
+        {/* Routes 'Home' and 'Settings' and corresponding React Components */}
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+        />
+        <Stack.Screen
+          name="Settings"
+          component={SettingsScreen}
+        />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 };
