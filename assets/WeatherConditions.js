@@ -1,42 +1,42 @@
-export const WeatherConditions = {
-  Rain:{
-    color: '#005BEA',
+export const weatherConditions = {
+  Rain: {
+    color: '#8cecff',
     title: 'Raining',
-    icon: 'weather-rain'
+    icon: 'weather-rainy'
   },
-  Clear:{
-    color: '#F7B733',
-    title: 'Sunny',
-    icon: 'weather-clear'
+  Clear: {
+    color: '#f7ffd9',
+    title: 'So Sunny',
+    icon: 'weather-sunny'
   },
-  Thunderstorm:{
-    color: '#616161',
-    title: 'Thunder',
-    icon: 'weather-thunder'
+  Thunderstorm: {
+    color: '#e4a1ff',
+    title: 'A Storm is coming',
+    icon: 'weather-lightning'
   },
-  Snow:{
-    color: '#00D2FF',
-    title: 'Snowing',
-    icon: 'weather-snow'
-  },
-  Clouds:{
-    color: '#1F1C2C',
+  Clouds: {
+    color: '#f7f7f7',
     title: 'Clouds',
-    icon: 'weather-clouds'
+    icon: 'weather-cloudy'
   },
-  Drizzle:{
-    color: '#076585',
+  Snow: {
+    color: '#fcfcfc',
+    title: 'Snow',
+    icon: 'weather-snowy'
+  },
+  Drizzle: {
+    color: '#9bbec9',
     title: 'Drizzle',
-    icon: 'weather-drizzle'
+    icon: 'weather-hail'
   },
-  Haze:{
-    color: '#66A6FF',
+  Haze: {
+    color: '#a6c8f7',
     title: 'Haze',
-    icon: 'weather-haze'
+    icon: 'weather-hail'
   },
-  Mist:{
-    color: '#3CD3AD',
+  Mist: {
+    color: '#95fce2',
     title: 'Mist',
-    icon: 'weather-mist'
-  },
-}
+    icon: 'weather-fog'
+  }
+};
