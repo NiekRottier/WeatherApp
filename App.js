@@ -18,7 +18,7 @@ const App = () => {
           headerLeft: '',
           headerTitleAlign: 'center',
           headerStyle: {
-            backgroundColor: '#24f2bb',
+            backgroundColor: '#78A9FA',
           },
           headerTintColor: '#fff',
           headerTitleStyle: {

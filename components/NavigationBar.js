@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   navButton: {
     height: 60,
     width: '50%',
-    backgroundColor: '#24f2bb',
+    backgroundColor: '#78FABF',
     justifyContent: 'center',
     alignItems: 'center'
   },
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     fontSize: 24
   },
   activeButton: {
-    backgroundColor: '#2fe0b1'
+    backgroundColor: '#58F5AE'
   }
 });
 
