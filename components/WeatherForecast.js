@@ -2,8 +2,9 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {WeatherConditions} from '../assets/WeatherConditions';
 
-const WeatherForecast = ({day, weather}) => {
-  if(weather === 'Retrieving weather'){
+const WeatherForecast = ({day, forecast}) => {
+  console.log(forecast);
+  if(Object.keys(forecast).length === 0){
     return (
       <View style={[styles.view, {backgroundColor:'#3CD3AD'}]}>
         <Text>Retrieving weather..</Text>
@@ -11,10 +12,11 @@ const WeatherForecast = ({day, weather}) => {
     );
   } else {
     return (
-      <View style={[styles.view, {backgroundColor:WeatherConditions[weather].color}]}>
+      <View style={[styles.view, {backgroundColor:'lightgreen'}]}>
         <Text>WeatherForecast in {day} days</Text>
+        <Text>Temperature: {forecast.main.temp}</Text>
       </View>
-    )
+    );
   }
 
 }
