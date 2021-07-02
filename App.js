@@ -14,8 +14,6 @@ const App = () => {
       <Stack.Navigator
         initialRouteName="Home"
         screenOptions={{
-          animationEnabled: 'false',
-          headerLeft: '',
           headerTitleAlign: 'center',
           headerStyle: {
             backgroundColor: '#24f2bb',
