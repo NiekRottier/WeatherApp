@@ -27,10 +27,11 @@ const NavigationBar = ({navigation, activeButton}) => {
 const styles = StyleSheet.create({
   buttonContainer: {
     width: '100%',
+    height: '8%',
     flexDirection: 'row'
   },
   navButton: {
-    height: 60,
+    height: '100%',
     width: '50%',
     backgroundColor: '#78FABF',
     justifyContent: 'center',

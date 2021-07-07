@@ -19,7 +19,6 @@ const WeatherWidget = () => {
     fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.lon}&APPID=${API_KEY}&units=metric&cnt=17`)
       .then(res => res.json())
       .then(json => {
-        console.log(json);
         setFullForecast(json)
         setSelectedForecast(json.list[hours])
         // If there is a city fill up city variable
@@ -40,7 +39,7 @@ const WeatherWidget = () => {
   return (
     <View style={styles.view}>
       {/* WeatherView */}
-      <WeatherForecast hours={hours} forecast={selectedForecast}/>
+      <WeatherForecast location={city} forecast={selectedForecast}/>
       {/* Timeline */}
       <View style={styles.timeSelector}>
         <Slider
@@ -55,7 +54,6 @@ const WeatherWidget = () => {
         />
         <Text>+{hours} hours</Text>
       </View>
-      <Text>City: {city}</Text>
     </View>
   )
 }
@@ -63,17 +61,18 @@ const WeatherWidget = () => {
 const styles = StyleSheet.create({
   view: {
     width: '100%',
+    height: '92%'
   },
   timeSelector: {
     width: '100%',
+    height: '8%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#6ADECA'
   },
   timeSlider: {
-    width: '75%',
-    height: 40
+    width: '75%'
   }
 });
 

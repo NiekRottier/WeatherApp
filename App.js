@@ -14,16 +14,7 @@ const App = () => {
       <Stack.Navigator
         initialRouteName="Home"
         screenOptions={{
-          animationEnabled: false,
-          headerLeft: '',
-          headerTitleAlign: 'center',
-          headerStyle: {
-            backgroundColor: '#78A9FA',
-          },
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontSize: 24
-          }
+          headerShown: false
         }}
       >
         {/* Routes 'Home' and 'Settings' and corresponding React Components */}
