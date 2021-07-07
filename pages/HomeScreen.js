@@ -3,10 +3,10 @@ import {StyleSheet, View} from 'react-native';
 import WeatherWidget from '../components/WeatherWidget';
 import NavigationBar from '../components/NavigationBar';
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = ({route, navigation}) => {
   return (
     <View style={styles.view}>
-      <WeatherWidget/>
+      <WeatherWidget location={route.params}/>
 
       <NavigationBar navigation={navigation} activeButton={'Home'}/>
     </View>

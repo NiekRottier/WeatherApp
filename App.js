@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
@@ -21,6 +21,7 @@ const App = () => {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
+          initialParams={{'lat': '51.4536672', 'lon': '3.5709125'}}
         />
         <Stack.Screen
           name="Settings"

@@ -5,10 +5,8 @@ import {API_KEY} from '../assets/API_KEY';
 
 import WeatherForecast from './WeatherForecast';
 
-const WeatherWidget = () => {
+const WeatherWidget = ({location}) => {
   const [hours, setHours] = useState(0)
-  // Location with latitude & longitude
-  const [location, setLocation] = useState({'lat': 51.4536672, 'lon': 3.5709125})
   const [city, setCity] = useState('Not found..')
   const [fullForecast, setFullForecast] = useState({})
   const [selectedForecast, setSelectedForecast] = useState({})
