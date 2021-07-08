@@ -7,7 +7,7 @@ import WeatherForecast from './WeatherForecast';
 
 const WeatherWidget = ({location}) => {
   const [hours, setHours] = useState(0)
-  const [city, setCity] = useState('Not found..')
+  const [city, setCity] = useState('City not found..')
   const [fullForecast, setFullForecast] = useState({})
   const [selectedForecast, setSelectedForecast] = useState({})
 
@@ -18,8 +18,13 @@ const WeatherWidget = ({location}) => {
       .then(json => {
         setFullForecast(json)
         setSelectedForecast(json.list[hours])
-        // If there is a city fill up city variable
-        if(json.city.country !== ''){ setCity(json.city.country + ', ' + json.city.name) }
+        // If there is a city fill up city variable, else fill it with 'City not found'
+        console.log(json.city)
+        if (json.city.name === ""){
+          setCity('City not found..')
+        } else {
+          setCity(json.city.country + ', ' + json.city.name)
+        }
       })
       .catch(err => console.log(err))
   }, [location])
