@@ -8,7 +8,7 @@ const HomeScreen = ({route, navigation}) => {
     <View style={styles.view}>
       <WeatherWidget location={route.params}/>
 
-      <NavigationBar navigation={navigation} activeButton={'Home'}/>
+      <NavigationBar navigation={navigation} activeButton={'Home'} lat={route.params.lat} lon={route.params.lon}/>
     </View>
   )
 }

@@ -13,7 +13,6 @@ const WeatherWidget = ({location}) => {
 
   // Get weather for next 48 hours from OpenWeatherMap
   useEffect(() => {
-    console.log(location);
     fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.lon}&APPID=${API_KEY}&units=metric&cnt=17`)
       .then(res => res.json())
       .then(json => {

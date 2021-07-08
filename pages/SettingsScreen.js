@@ -2,18 +2,10 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 import NavigationBar from '../components/NavigationBar';
 
-const SettingsScreen = ({navigation}) => {
+const SettingsScreen = ({navigation, route}) => {
   // Standard location is NL, Flushing
-  const [lat, setLat] = useState('51.4536672')
-  const [lon, setLon] = useState('3.5709125')
-
-  function changeValue(direction, position) {
-    if (direction === 'lat'){
-      setLat(position)
-    } else {
-      setLon(position)
-    }
-  }
+  const [lat, setLat] = useState(route.params.lat)
+  const [lon, setLon] = useState(route.params.lon)
 
   return (
     <View style={styles.view}>
@@ -25,7 +17,7 @@ const SettingsScreen = ({navigation}) => {
             style={styles.input}
             placeholder='Enter latitude here'
             keyboardType="numeric"
-            onChangeText={(lat) => changeValue('lat', lat)}
+            onChangeText={(value) => setLat(value)}
             value={lat}
           />
         </View>
@@ -35,7 +27,7 @@ const SettingsScreen = ({navigation}) => {
             style={styles.input}
             placeholder='Enter longitude here'
             keyboardType="numeric"
-            onChangeText={(lon) => changeValue('lon', lon)}
+            onChangeText={(value) => setLon(value)}
             value={lon}
           />
         </View>

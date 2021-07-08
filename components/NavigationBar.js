@@ -19,7 +19,10 @@ const NavigationBar = ({navigation, activeButton, lat, lon}) => {
       })}>
         <Text style={styles.buttonText}>Home</Text>
       </Pressable>
-      <Pressable style={settingsStyle} onPress={() => navigation.navigate('Settings')}>
+      <Pressable style={settingsStyle} onPress={() => navigation.navigate({
+        name:'Settings',
+        params: { 'lat': lat, 'lon': lon }
+      })}>
         <Text style={styles.buttonText}>Settings</Text>
       </Pressable>
     </View>
