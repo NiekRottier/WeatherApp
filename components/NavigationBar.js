@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, View, Pressable, Text} from 'react-native';
 
-const NavigationBar = ({navigation, activeButton, lat, lon}) => {
+const NavigationBar = ({navigation, activeButton}) => {
   const [homeStyle, setHomeStyle] = useState(styles.navButton);
   const [settingsStyle, setSettingsStyle] = useState(styles.navButton);
 
@@ -13,14 +13,10 @@ const NavigationBar = ({navigation, activeButton, lat, lon}) => {
   return(
     <View style={styles.buttonContainer} >
       {/* Using Pressable instead of Button for styling options */}
-      <Pressable style={homeStyle} onPress={() => navigation.navigate({
-        name:'Home'
-      })}>
+      <Pressable style={homeStyle} onPress={() => navigation.navigate('Home', {'fromSettings': true})}>
         <Text style={styles.buttonText}>Home</Text>
       </Pressable>
-      <Pressable style={settingsStyle} onPress={() => navigation.navigate({
-        name:'Settings'
-      })}>
+      <Pressable style={settingsStyle} onPress={() => navigation.navigate('Settings')}>
         <Text style={styles.buttonText}>Settings</Text>
       </Pressable>
     </View>

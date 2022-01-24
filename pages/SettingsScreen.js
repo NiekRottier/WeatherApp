@@ -10,7 +10,6 @@ const SettingsScreen = ({navigation, route}) => {
   // Put the data from the storage into the state variables
   useEffect(() => {
     getLocation().then((location) => {
-      console.log(location)
       setLat(location.lat)
       setLon(location.lon)
     })
@@ -18,7 +17,7 @@ const SettingsScreen = ({navigation, route}) => {
 
   // Update the location in the storage
   useEffect(() => {
-    storeLocation({'lat': lat, 'lon': lon}).then(() => console.log("Updated the location"))
+    storeLocation({'lat': lat, 'lon': lon}).then(() => {})
   }, [lat, lon])
 
 
