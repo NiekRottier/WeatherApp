@@ -14,14 +14,12 @@ const NavigationBar = ({navigation, activeButton, lat, lon}) => {
     <View style={styles.buttonContainer} >
       {/* Using Pressable instead of Button for styling options */}
       <Pressable style={homeStyle} onPress={() => navigation.navigate({
-        name:'Home',
-        params: { 'lat': lat, 'lon': lon }
+        name:'Home'
       })}>
         <Text style={styles.buttonText}>Home</Text>
       </Pressable>
       <Pressable style={settingsStyle} onPress={() => navigation.navigate({
-        name:'Settings',
-        params: { 'lat': lat, 'lon': lon }
+        name:'Settings'
       })}>
         <Text style={styles.buttonText}>Settings</Text>
       </Pressable>

@@ -5,10 +5,20 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import HomeScreen from './pages/HomeScreen';
 import SettingsScreen from './pages/SettingsScreen';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {getLocation, storeLocation} from './assets/AsyncStorage';
 
 const Stack = createStackNavigator();
 
 const App = () => {
+  // If AsyncStorage is empty put the initial location into the storage
+  getLocation().then((location) => {
+    if (location === null){
+      storeLocation({'lat': '51.4536672', 'lon': '3.5709125'}).then(() => console.log("Stored initial location"))
+    }
+    console.log(location)
+  })
+
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -21,12 +31,10 @@ const App = () => {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          initialParams={{'lat': '51.4536672', 'lon': '3.5709125'}}
         />
         <Stack.Screen
           name="Settings"
           component={SettingsScreen}
-          initialParams={{'lat': '51.4536672', 'lon': '3.5709125'}}
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -6,9 +6,9 @@ import NavigationBar from '../components/NavigationBar';
 const HomeScreen = ({route, navigation}) => {
   return (
     <View style={styles.view}>
-      <WeatherWidget location={route.params}/>
+      <WeatherWidget />
 
-      <NavigationBar navigation={navigation} activeButton={'Home'} lat={route.params.lat} lon={route.params.lon}/>
+      <NavigationBar navigation={navigation} activeButton={'Home'} />
     </View>
   )
 }

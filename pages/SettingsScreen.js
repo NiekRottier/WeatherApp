@@ -1,11 +1,26 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 import NavigationBar from '../components/NavigationBar';
+import {getLocation, storeLocation} from '../assets/AsyncStorage';
 
 const SettingsScreen = ({navigation, route}) => {
-  // Standard location is NL, Flushing
-  const [lat, setLat] = useState(route.params.lat)
-  const [lon, setLon] = useState(route.params.lon)
+  const [lat, setLat] = useState("1")
+  const [lon, setLon] = useState("1")
+
+  // Put the data from the storage into the state variables
+  useEffect(() => {
+    getLocation().then((location) => {
+      console.log(location)
+      setLat(location.lat)
+      setLon(location.lon)
+    })
+  }, [])
+
+  // Update the location in the storage
+  useEffect(() => {
+    storeLocation({'lat': lat, 'lon': lon}).then(() => console.log("Updated the location"))
+  }, [lat, lon])
+
 
   return (
     <View style={styles.view}>
@@ -33,7 +48,7 @@ const SettingsScreen = ({navigation, route}) => {
         </View>
       </View>
 
-      <NavigationBar navigation={navigation} activeButton={'Settings'} lat={lat} lon={lon}/>
+      <NavigationBar navigation={navigation} activeButton={'Settings'} />
     </View>
   )
 }
