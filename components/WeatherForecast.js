@@ -43,9 +43,9 @@ const WeatherForecast = ({location, forecast}) => {
     // multiplied by 1000 so that the argument is in milliseconds, not seconds.
     let date = new Date(unix_timestamp * 1000);
     // Date of the forecast
-    let forecastFullDate = `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`;
+    let forecastFullDate = `${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()}`;
     // Hours of the forecast
-    let forecastHours = `${date.getHours()-2}:00`;
+    let forecastHours = `${date.getHours()-1}:00`;
 
     return (
       <View style={styles.view}>
