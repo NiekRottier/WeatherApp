@@ -5,6 +5,9 @@ export const weatherConditions = {
   Clear: {
     icon: 'weather-sunny'
   },
+  ClearNight: {
+    icon: 'weather-moon'
+  },
   Thunderstorm: {
     icon: 'weather-lightning'
   },

@@ -11,7 +11,22 @@ const WeatherForecast = ({location, forecast}) => {
       </View>
     );
   } else {
+    // Set time
+    let unix_timestamp = forecast.dt
+    // multiplied by 1000 so that the argument is in milliseconds, not seconds.
+    let date = new Date(unix_timestamp * 1000);
+    // Date of the forecast
+    let forecastFullDate = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+    // Hours of the forecast
+    let forecastHours = `${date.getHours() - 1}:00`;
+
+    console.log(date.getHours() - 1);
     let weather = forecast.weather[0].main;
+    // If it's Clear and night, show a moon icon
+    if(weather === "Clear" && (date.getHours()-1 >= 21 || date.getHours()-1 <= 6)){
+      console.log("NIGHT and CLEAR");
+      weather = 'ClearNight'
+    }
 
     // Set weather icon
     let icon;
@@ -34,18 +49,12 @@ const WeatherForecast = ({location, forecast}) => {
       case 'weather-fog':
         icon = require('../assets/images/weather-fog.png')
         break;
+      case 'weather-moon':
+        icon = require('../assets/images/weather-moon.png')
+        break;
       default:
         icon = require('../assets/images/weather-sunny.png')
     }
-
-    // Set time
-    let unix_timestamp = forecast.dt
-    // multiplied by 1000 so that the argument is in milliseconds, not seconds.
-    let date = new Date(unix_timestamp * 1000);
-    // Date of the forecast
-    let forecastFullDate = `${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()}`;
-    // Hours of the forecast
-    let forecastHours = `${date.getHours()-1}:00`;
 
     return (
       <View style={styles.view}>
