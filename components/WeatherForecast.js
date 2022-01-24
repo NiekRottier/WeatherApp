@@ -20,11 +20,9 @@ const WeatherForecast = ({location, forecast}) => {
     // Hours of the forecast
     let forecastHours = `${date.getHours() - 1}:00`;
 
-    console.log(date.getHours() - 1);
     let weather = forecast.weather[0].main;
     // If it's Clear and night, show a moon icon
     if(weather === "Clear" && (date.getHours()-1 >= 21 || date.getHours()-1 <= 6)){
-      console.log("NIGHT and CLEAR");
       weather = 'ClearNight'
     }
 
