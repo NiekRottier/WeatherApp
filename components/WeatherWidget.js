@@ -25,8 +25,6 @@ const WeatherWidget = ({fromSettings}) => {
   if (fromSettings){
     getLocation().then((data) => {
       // Check if the location is changed
-      console.log(data);
-      console.log(location);
       if (location.lat === data.lat && location.lon === data.lon){
         console.log('Location not updated')
       } else{
@@ -37,39 +35,31 @@ const WeatherWidget = ({fromSettings}) => {
     })
   }
 
-  // Fetch when location updates, except for the first time. Otherwise the location is not yet filled.
+  // Fetch Weather for the next 48h when location updates from the 2nd run onwards. During the first run is the location not yet filled.
   useEffect(() => {
     if (isFirstRun.current){
-      isFirstRun.current = false
+        isFirstRun.current = false
     } else {
-      console.log(`Fake fetch is done. Coords: {${location.lat}, ${location.lon}}`)
+      fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.lon}&APPID=${API_KEY}&units=metric&cnt=17`)
+        .then(res => res.json())
+        .then(json => {
+          // If response code is 200 OK continue, else log code and message
+          if (json.cod === "200") {
+            setFullForecast(json)
+            setSelectedForecast(json.list[hours])
+            // If there is a city fill up city variable, else fill it with 'City not found'
+            if (json.city.name === "") {
+              setCity('City not found..')
+            } else {
+              setCity(json.city.country + ', ' + json.city.name)
+            }
+            console.log('Updated the weatherforcast')
+          } else {
+            console.log(`ERROR ${json.cod}: ${json.message}`)
+          }
+        })
     }
   }, [location])
-
-  // Get weather for next 48 hours from OpenWeatherMap when location updates on the 2nd run and onwards
-  // useEffect(() => {
-  //   if (isFirstRun.current){
-  //       isFirstRun.current = false
-  //   } else {
-  //     fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.lon}&APPID=${API_KEY}&units=metric&cnt=17`)
-  //       .then(res => res.json())
-  //       .then(json => {
-  //         // If response code is 200 OK continue, else log code and message
-  //         if (json.cod === "200") {
-  //           setFullForecast(json)
-  //           setSelectedForecast(json.list[hours])
-  //           // If there is a city fill up city variable, else fill it with 'City not found'
-  //           if (json.city.name === "") {
-  //             setCity('City not found..')
-  //           } else {
-  //             setCity(json.city.country + ', ' + json.city.name)
-  //           }
-  //         } else {
-  //           console.log(`ERROR ${json.cod}: ${json.message}`)
-  //         }
-  //       })
-  //   }
-  // }, [location])
 
   // Update Temp when a different hours is selected
   function updateHours(newHours){
