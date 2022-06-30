@@ -18,7 +18,7 @@ const WeatherForecast = ({location, forecast}) => {
     // Date of the forecast
     let forecastFullDate = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
     // Hours of the forecast
-    let forecastHours = `${date.getHours() - 1}:00`;
+    let forecastHours = `${date.getHours()}:00`;
 
     let weather = forecast.weather[0].main;
     // If it's Clear and night, show a moon icon

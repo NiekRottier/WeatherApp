@@ -45,6 +45,7 @@ const WeatherWidget = ({fromSettings}) => {
         .then(json => {
           // If response code is 200 OK continue, else log code and message
           if (json.cod === "200") {
+            console.log(json);
             setFullForecast(json)
             setSelectedForecast(json.list[hours])
             // If there is a city fill up city variable, else fill it with 'City not found'
